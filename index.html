@@ -120,4 +120,19 @@ function updateLink(name){
  const qty=document.getElementById('mQty').value; const fab=document.getElementById('mFabric').value;
  const waMsg=`Hello EODII INDUSTRY,%0A%0AI want quote for:%0AProduct: ${name}%0AColor: ${selectedColor}%0ASize: ${selectedSize}%0AQuantity: ${qty} pcs%0AFabric GSM: ${fab}%0A%0APlease send me price & details.`;
  const emailSub=`Inquiry for ${name} - ${qty}pcs - ${selectedSize} - ${fab}`;
- const emailBody=`Hello EODII INDUSTRY,%0D%0A%0D%0AProduct: ${name}%0D%0AColor: ${selectedCol
+ const emailBody=`Hello EODII INDUSTRY,%0D%0A%0D%0AProduct: ${name}%0D%0AColor: ${selectedColor}%0D%0ASize: ${selectedSize}%0D%0AQuantity: ${qty} pcs%0D%0AFabric GSM: ${fab}%0D%0A%0D%0APlease send me quotation.%0D%0A%0D%0AThank you`;
+ document.getElementById('mWhatsapp').href=`https://wa.me/923157750987?text=${waMsg}`;
+ document.getElementById('mEmail').href=`mailto:eodiiind@hotmail.com?subject=${emailSub}&body=${emailBody}`;
+}
+function closeModal(){document.getElementById('productModal').style.display='none'}
+document.getElementById('mQty').addEventListener('input',()=>updateLink(document.getElementById('mTitle').innerText));
+document.getElementById('mFabric').addEventListener('change',()=>updateLink(document.getElementById('mTitle').innerText));
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('.card').forEach(card=>{
+  const title=card.querySelector('b').innerText.trim();
+  card.onclick=()=>openProduct(title);
+ });
+});
+</script>
+</body>
+</html>
