@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EODII INDUSTRY - Premium Clothing Manufacturer</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -14,8 +13,15 @@ a{text-decoration:none;color:inherit}
 .nav a{margin-left:28px;font-size:13px;color:#aaa}.nav a:hover{color:#fff}
 .btn-red{background:#ff1a1a;color:#fff;padding:12px 28px;border:none;font-weight:700;border-radius:4px;display:inline-block;cursor:pointer}
 .hero{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;padding:40px 60px;background:radial-gradient(circle at left,#1a0a0a 0%,#000 70%)}
-.hero-left h1{font-size:62px;line-height:.95;margin-top:20px;font-family:'Oswald',sans-serif}.hero-left h1 span{color:#ff1a1a}
-.hero-img{border:2px solid #ff1a1a33;border-radius:12px;overflow:hidden;background:#111;height:340px}.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-size:62px;line-height:.95;margin-top:20px;font-family:'Oswald',sans-serif}.hero h1 span{color:#ff1a1a}
+.hero-slider{position:relative;overflow:hidden;border-radius:16px;border:2px solid #ff1a1a33;background:#fff;height:380px}
+.slider-track{display:flex;transition:transform 0.6s ease;height:100%}
+.slide{min-width:100%;height:100%;position:relative;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.slide img{width:100%;height:85%;object-fit:contain;padding:10px;background:#fff}
+.slide span{position:absolute;bottom:0;left:0;right:0;background:#000;color:#fff;text-align:center;padding:8px;font-size:11px;font-weight:700;letter-spacing:1px}
+.dots{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:5;flex-wrap:wrap;max-width:90%;justify-content:center}
+.dots div{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,0.25);cursor:pointer;border:1px solid #fff}
+.dots div.active{background:#ff1a1a;border-color:#ff1a1a}
 .stats{background:#111;display:grid;grid-template-columns:repeat(4,1fr);padding:18px 60px;border-top:1px solid #222;border-bottom:1px solid #222}.stats b{color:#ff1a1a}
 .products{padding:70px 60px;background:#fff;color:#000;text-align:center}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
@@ -32,7 +38,7 @@ a{text-decoration:none;color:inherit}
 .sizeBtn.active{background:#000;color:#fff;border-color:#000}
 .colorDot{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;display:inline-block;margin:3px}
 .colorDot.active{box-shadow:0 0 0 2px #ff1a1a}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.facility{grid-template-columns:1fr}.header,.hero,.products,.facility,.footer,.stats{padding:20px}.stats{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.facility{grid-template-columns:1fr}.header,.hero,.products,.facility,.footer,.stats{padding:20px}.stats{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr}.hero-slider{height:320px}}
 </style>
 </head>
 <body>
@@ -43,36 +49,51 @@ a{text-decoration:none;color:inherit}
 <a href="https://wa.me/923157750987?text=Hello%20EODII%20I%20want%20a%20quote" target="_blank" class="btn-red">GET A QUOTE</a>
 </div>
 
-<div class="hero" id="about"><div><h1>BUILT FOR THE<br>STREETS.<br><span>MADE FOR THE<br>FUTURE.</span></h1><p style="color:#bbb;margin:20px 0 25px;font-size:14px;max-width:480px">Premium apparel manufacturing for streetwear & sportswear brands. Custom cut & sew, embroidery, private label production. GSM 200 to 400 available.</p><a href="#contactForm" class="btn-red">REQUEST A QUOTE</a><a href="#products" class="btn-red" style="background:transparent;border:1px solid #ff1a1a;margin-left:10px">VIEW PRODUCTS</a></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:15px"><div class="hero-img"><img src="hoodie - black.webp"></div><div class="hero-img"><img src="hoodie - white.webp"></div></div></div>
+<div class="hero" id="about"><div><h1>BUILT FOR THE<br>STREETS.<br><span>MADE FOR THE<br>FUTURE.</span></h1><p style="color:#bbb;margin:20px 0 25px;font-size:14px;max-width:480px">Premium apparel manufacturing for streetwear & sportswear brands. Custom cut & sew, embroidery, private label production. GSM 200 to 400 available.</p><a href="#contactForm" class="btn-red">REQUEST A QUOTE</a><a href="#products" class="btn-red" style="background:transparent;border:1px solid #ff1a1a;margin-left:10px">VIEW PRODUCTS</a></div>
+
+<div class="hero-slider">
+<div class="slider-track" id="sliderTrack">
+<div class="slide"><img src="hoodie - black.webp"><span>HOODIE BLACK - 400 GSM</span></div>
+<div class="slide"><img src="hoodie - white.webp"><span>HOODIE WHITE - 400 GSM</span></div>
+<div class="slide"><img src="hoodie - red.webp"><span>HOODIE RED - 400 GSM</span></div>
+<div class="slide"><img src="hoodie - navy.webp"><span>HOODIE NAVY - 400 GSM</span></div>
+<div class="slide"><img src="tshirt - black.webp"><span>TSHIRT BLACK - 200 GSM</span></div>
+<div class="slide"><img src="tshirt - white.webp"><span>TSHIRT WHITE - 200 GSM</span></div>
+<div class="slide"><img src="tshirt - red.webp"><span>TSHIRT RED - 200 GSM</span></div>
+<div class="slide"><img src="tshirt - navy.webp"><span>TSHIRT NAVY - 200 GSM</span></div>
+<div class="slide"><img src="tracksuit - black.webp"><span>TRACKSUIT BLACK - 300 GSM</span></div>
+<div class="slide"><img src="tracksuit - white.webp"><span>TRACKSUIT WHITE - 300 GSM</span></div>
+<div class="slide"><img src="tracksuit - red.webp"><span>TRACKSUIT RED - 300 GSM</span></div>
+<div class="slide"><img src="tracksuit - navy.webp"><span>TRACKSUIT NAVY - 300 GSM</span></div>
+</div>
+<div class="dots" id="sliderDots"></div>
+</div>
+</div>
 
 <div class="stats"><div><b>5+ YEARS</b><small> EXPERIENCE</small></div><div><b>LOW MOQ</b><small> From 20pcs</small></div><div><b>GSM 200-400</b><small> All Fabrics</small></div><div><b>GLOBAL EXPORT</b><small> 120+ Countries</small></div></div>
 
-<div class="products" id="products"><h2 style="font-family:'Oswald',sans-serif;font-size:36px">OUR PRODUCT CATEGORIES</h2><p style="color:#666;margin-top:8px">Click any product - Real Color Change With Your Photos</p>
-<div class="grid" id="productGrid">
-</div></div>
+<div class="products" id="products"><h2 style="font-family:'Oswald',sans-serif;font-size:36px">OUR PRODUCT CATEGORIES</h2><p style="color:#666;margin-top:8px">Each Product Has One Image - Click For Real Color Change With Your Photos</p>
+<div class="grid" id="productGrid"></div></div>
 
 <div class="facility" id="manufacturing">
-<div class="ship-box"><h3 style="font-family:'Oswald',sans-serif;font-size:22px">WORLDWIDE<br><span style="color:#ff1a1a">FAST SHIPPING</span></h3><p style="color:#aaa;font-size:12px;margin:12px 0 18px;line-height:1.6">We ship to 120+ countries via trusted partners with tracking & insurance. DDP & DDU available.</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px"><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">📦</span><br><b>DHL</b><br><small style="color:#888;font-size:8px">EXPRESS 3-5 DAYS</small></div><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">✈️</span><br><b>FedEx</b><br><small style="color:#888;font-size:8px">PRIORITY</small></div><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">🚚</span><br><b>UPS</b><br><small style="color:#888;font-size:8px">WORLDWIDE</small></div></div><div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><div style="background:#ff1a1a;padding:7px 12px;border-radius:6px;font-size:10px;font-weight:700">3-7 DAYS DELIVERY</div><div style="background:#222;padding:7px 12px;border-radius:6px;font-size:10px;font-weight:700">GSM 200-400</div></div></div>
-<div class="fac-box"><h3 style="font-family:'Oswald',sans-serif;font-size:22px">OUR MANUFACTURING FACILITY</h3><p style="color:#666;font-size:13px;margin:15px 0;line-height:1.6">Located in Sialkot, Pakistan. Modern production lines, embroidery, DTG printing, strict quality control. Fabric GSM from 200 to 400 available as per customer demand.</p><div style="margin:15px 0;font-size:12px;line-height:1.8;color:#333">✓ Cut & Sew • Embroidery • Screen Printing<br>✓ Fabric GSM 200-400 • Custom Labels & Packaging<br>✓ Low MOQ From 20pcs • Fast Turnaround 7-21 Days<br>✓ Sustainable & Ethical Manufacturing</div><div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap"><a href="https://wa.me/923157750987?text=Factory%20Tour%20Request" target="_blank" class="btn-red" style="padding:10px 20px;font-size:12px">SCHEDULE A FACTORY TOUR</a><a href="#contactForm" style="background:#000;color:#fff;padding:10px 20px;border-radius:4px;font-size:12px;font-weight:700">GET SHIPPING RATE</a></div></div>
+<div class="ship-box"><h3 style="font-family:'Oswald',sans-serif;font-size:22px">WORLDWIDE<br><span style="color:#ff1a1a">FAST SHIPPING</span></h3><p style="color:#aaa;font-size:12px;margin:12px 0 18px;line-height:1.6">We ship to 120+ countries via trusted partners with tracking & insurance.</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px"><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">📦</span><br><b>DHL</b><br><small style="color:#888;font-size:8px">EXPRESS 3-5 DAYS</small></div><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">✈️</span><br><b>FedEx</b><br><small style="color:#888;font-size:8px">PRIORITY</small></div><div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:18px 10px;text-align:center"><span style="font-size:20px">🚚</span><br><b>UPS</b><br><small style="color:#888;font-size:8px">WORLDWIDE</small></div></div></div>
+<div class="fac-box"><h3 style="font-family:'Oswald',sans-serif;font-size:22px">OUR MANUFACTURING FACILITY</h3><p style="color:#666;font-size:13px;margin:15px 0;line-height:1.6">Located in Sialkot, Pakistan. Modern production lines, embroidery, DTG printing, strict quality control. Fabric GSM from 200 to 400 available.</p><div style="margin:15px 0;font-size:12px;line-height:1.8;color:#333">✓ Cut & Sew • Embroidery • Screen Printing<br>✓ Fabric GSM 200-400 • Custom Labels & Packaging<br>✓ Low MOQ From 20pcs • Fast Turnaround 7-21 Days</div></div>
 </div>
 
 <div style="padding:40px 60px;background:#fff" id="contact">
 <div style="background:#111;padding:30px;border-radius:16px" id="contactForm">
 <h3 style="font-family:'Oswald',sans-serif;font-size:22px">SEND YOUR REQUIREMENT - GET QUOTE VIA EMAIL</h3><p style="color:#888;font-size:12px;margin-top:5px">Fill your product details, inquiry will go directly to eodiiind@hotmail.com</p>
 <form action="https://formsubmit.co/eodiiind@hotmail.com" method="POST" style="display:grid;gap:12px;margin-top:20px">
-<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New Inquiry from EODII Website - GSM 200-400"><input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New Inquiry from EODII Website"><input type="hidden" name="_template" value="table">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input name="Name" required placeholder="Your Name *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"><input name="Email" required type="email" placeholder="Your Email *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"></div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px"><input name="Product" required placeholder="Product (e.g. Hoodies) *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"><input name="Quantity" required placeholder="Quantity (e.g. 100 pcs) *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"><input name="Country" required placeholder="Your Country *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"></div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px"><input name="Color" placeholder="Color (e.g. Black)" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"><input name="Size" placeholder="Size (S,M,L,XL)" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<select name="Fabric GSM" required style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"><option value="">Select Fabric GSM *</option><option>200 GSM - Light Weight</option><option>220 GSM - Regular</option><option>250 GSM - Mid Weight</option><option>280 GSM - French Terry</option><option>300 GSM - Heavy Weight</option><option>320 GSM - Fleece</option><option>350 GSM - Extra Heavy</option><option>400 GSM - Premium Heavy</option><option>Custom GSM 200-400</option></select>
-</div>
 <textarea name="Message" placeholder="Your Message / Logo / Design Details" rows="4" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"></textarea>
-<button type="submit" style="background:#ff1a1a;color:#fff;padding:14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px">SEND INQUIRY TO EMAIL - eodiiind@hotmail.com</button>
+<button type="submit" style="background:#ff1a1a;color:#fff;padding:14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px">SEND INQUIRY TO EMAIL</button>
 </form>
 </div>
 </div>
 
-<div class="footer"><div><h4>CONTACT INFO</h4><p>📧 eodiiind@hotmail.com<br>📱 +92 315 7750987 (WhatsApp)<br>📍 Sialkot, Punjab, Pakistan</p></div><div><h4>BUSINESS HOURS</h4><p>Mon - Sat: 9:00 - 18:00 (PKT)<br>GSM Range: 200-400 Available<br>Reply within 24 hours on Email & WhatsApp</p></div><div><h4>GET IN TOUCH</h4><a href="https://wa.me/923157750987" target="_blank" class="btn-red" style="width:100%;text-align:center;display:block">CONTACT ON WHATSAPP</a><a href="mailto:eodiiind@hotmail.com" style="background:#fff;color:#000;padding:12px;text-align:center;display:block;border-radius:4px;font-weight:700;margin-top:10px">SEND EMAIL</a></div></div>
+<div class="footer"><div><h4>CONTACT INFO</h4><p>📧 eodiiind@hotmail.com<br>📱 +92 315 7750987 (WhatsApp)<br>📍 Sialkot, Punjab, Pakistan</p></div><div><h4>BUSINESS HOURS</h4><p>Mon - Sat: 9:00 - 18:00 (PKT)<br>GSM Range: 200-400 Available<br>Reply within 24 hours</p></div><div><h4>GET IN TOUCH</h4><a href="https://wa.me/923157750987" target="_blank" class="btn-red" style="width:100%;text-align:center;display:block">CONTACT ON WHATSAPP</a><a href="mailto:eodiiind@hotmail.com" style="background:#fff;color:#000;padding:12px;text-align:center;display:block;border-radius:4px;font-weight:700;margin-top:10px">SEND EMAIL</a></div></div>
 <div style="text-align:center;padding:15px;background:#0a0a0a;color:#666;font-size:11px">© 2026 EODII INDUSTRY • GSM 200-400 • Since 2021</div>
 
 <div id="productModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;justify-content:center;align-items:center;padding:15px">
@@ -82,27 +103,22 @@ a{text-decoration:none;color:inherit}
 <div style="padding:25px"><h2 id="mTitle" style="font-family:'Oswald',sans-serif;font-size:28px"></h2><p id="mDesc" style="color:#666;font-size:12px;margin:8px 0 15px"></p>
 <div style="margin:15px 0"><b style="font-size:11px;letter-spacing:1px">SELECT COLOR - REAL PHOTO WILL CHANGE:</b><div id="mColors" style="margin-top:8px"></div><small style="color:#888;font-size:10px">Selected: <span id="selColor" style="color:#000;font-weight:700">Black</span></small></div>
 <div style="margin:15px 0"><b style="font-size:11px;letter-spacing:1px">SELECT SIZE:</b><div id="mSizes" style="margin-top:8px"><span class="sizeBtn" onclick="selectSize(this)">S</span><span class="sizeBtn active" onclick="selectSize(this)">M</span><span class="sizeBtn" onclick="selectSize(this)">L</span><span class="sizeBtn" onclick="selectSize(this)">XL</span><span class="sizeBtn" onclick="selectSize(this)">XXL</span><span class="sizeBtn" onclick="selectSize(this)">Custom</span></div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0"><div><b style="font-size:10px">QUANTITY (MOQ 20pcs)</b><input id="mQty" type="number" value="50" min="20" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;margin-top:5px"></div><div><b style="font-size:10px">FABRIC GSM 200-400</b><select id="mFabric" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;margin-top:5px"><option>200 GSM - Light Weight</option><option>220 GSM - Regular</option><option>250 GSM - Mid Weight</option><option selected>280 GSM - French Terry</option><option>300 GSM - Heavy Weight</option><option>320 GSM - Fleece</option><option>350 GSM - Extra Heavy</option><option>400 GSM - Premium Heavy</option><option>Custom GSM 200-400</option></select></div></div>
-<div style="background:#f5f5f5;padding:12px;border-radius:8px;font-size:11px;color:#333;margin:10px 0">✓ GSM 200-400 Available • Custom Logo (Embroidery / Print / DTG)<br>✓ Custom Label & Packaging • Shipping: DHL/FedEx/UPS</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0"><div><b style="font-size:10px">QUANTITY (MOQ 20pcs)</b><input id="mQty" type="number" value="50" min="20" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;margin-top:5px"></div><div><b style="font-size:10px">FABRIC GSM 200-400</b><select id="mFabric" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;margin-top:5px"><option>200 GSM</option><option>220 GSM</option><option>250 GSM</option><option selected>280 GSM</option><option>300 GSM</option><option>320 GSM</option><option>350 GSM</option><option>400 GSM</option></select></div></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px"><a id="mWhatsapp" target="_blank" style="background:#25D366;color:#fff;padding:14px;text-align:center;display:block;border-radius:8px;font-weight:700;font-size:13px">💬 WhatsApp Inquiry</a><a id="mEmail" target="_blank" style="background:#000;color:#fff;padding:14px;text-align:center;display:block;border-radius:8px;font-weight:700;font-size:13px">📧 Email Inquiry</a></div>
 </div></div></div>
 
 <script>
-// UPDATED WITH YOUR REAL PHOTOS - Hoodie uses your 4 uploaded images
 const products={
- Tshirts:{img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800",desc:"Premium Custom T-Shirts • GSM 200-220 • 100% Cotton / Blend • Custom Print & Embroidery",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800"},{name:"White",hex:"#ffffff",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800"},{name:"Red",hex:"#ff1a1a",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800"}]},
- Hoodies:{img:"hoodie - black.webp",desc:"Heavyweight Hoodies • GSM 280-400 • Fleece / French Terry • Your Real Photos - Color Changes",colors:[{name:"Black",hex:"#000000",img:"hoodie - black.webp"},{name:"White",hex:"#ffffff",img:"hoodie - white.webp"},{name:"Red",hex:"#ff1a1a",img:"hoodie - red.webp"},{name:"Navy",hex:"#0a3d62",img:"hoodie - navy.webp"}]},
- Tracksuits:{img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800",desc:"Custom Tracksuits • GSM 250-350 • Polyester / Cotton Fleece • Sublimation",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800"}]},
- Jackets:{img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800",desc:"Varsity, Puffer, Bomber Jackets • GSM 300-400 • Custom Lining & Patches",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800"}]},
- "Hats & Caps":{img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800",desc:"Caps, Beanies, Snapback, Trucker Hats • Custom Embroidery • Low MOQ",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800"}]},
- "Sports Wears":{img:"https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800",desc:"Jerseys, Shorts, Sports Sets • GSM 200-280 • Dry Fit & Breathable",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800"}]},
- "Fashion Wears":{img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800",desc:"Trendy Fashion Collection • GSM 200-350 • Women & Men • Private Label",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800"}]},
- "Street Wears":{img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800",desc:"Oversized Streetwear • GSM 250-400 • Baggy Fit • Puff Print & Embroidery",colors:[{name:"Black",hex:"#000000",img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800"}]}
+ Tshirts:{img:"tshirt - black.webp",desc:"Premium Custom T-Shirts • GSM 200-220 • Your Real Photos",colors:[{name:"Black",hex:"#000000",img:"tshirt - black.webp"},{name:"White",hex:"#ffffff",img:"tshirt - white.webp"},{name:"Red",hex:"#ff1a1a",img:"tshirt - red.webp"},{name:"Navy",hex:"#0a3d62",img:"tshirt - navy.webp"}]},
+ Hoodies:{img:"hoodie - black.webp",desc:"Heavyweight Hoodies • GSM 280-400 • Your Real Photos",colors:[{name:"Black",hex:"#000000",img:"hoodie - black.webp"},{name:"White",hex:"#ffffff",img:"hoodie - white.webp"},{name:"Red",hex:"#ff1a1a",img:"hoodie - red.webp"},{name:"Navy",hex:"#0a3d62",img:"hoodie - navy.webp"}]},
+ Tracksuits:{img:"tracksuit - black.webp",desc:"Custom Tracksuits • GSM 250-350 • Your Real Photos - Hoodie + Pants Set",colors:[{name:"Black",hex:"#000000",img:"tracksuit - black.webp"},{name:"White",hex:"#ffffff",img:"tracksuit - white.webp"},{name:"Red",hex:"#ff1a1a",img:"tracksuit - red.webp"},{name:"Navy",hex:"#0a3d62",img:"tracksuit - navy.webp"}]},
+ Jackets:{img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800",desc:"Jackets • GSM 300-400",colors:[{name:"Black",hex:"#000",img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800"}]},
+ "Hats & Caps":{img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800",desc:"Caps • Custom Embroidery",colors:[{name:"Black",hex:"#000",img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800"}]},
+ "Sports Wears":{img:"https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800",desc:"Sports Wear • GSM 200-280",colors:[{name:"Black",hex:"#000",img:"https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800"}]},
+ "Fashion Wears":{img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800",desc:"Fashion Collection • GSM 200-350",colors:[{name:"Black",hex:"#000",img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800"}]},
+ "Street Wears":{img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800",desc:"Streetwear • GSM 250-400",colors:[{name:"Black",hex:"#000",img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800"}]}
 };
-
-let selectedColorObj = null;
-let selectedSize="M";
-
+let selectedColorObj=null; let selectedSize="M";
 function renderGrid(){
  const grid=document.getElementById('productGrid');
  grid.innerHTML=Object.keys(products).map(key=>{
@@ -110,45 +126,45 @@ function renderGrid(){
   return `<div class="card" onclick="openProduct('${key}')"><div class="card-img"><img src="${p.img}"></div><div class="card-body"><b>${key}</b><small>${p.desc}</small><span class="card-btn">VIEW DETAILS</span></div></div>`;
  }).join('');
 }
-
 function openProduct(name){
  const p=products[name];
  document.getElementById('mImg').src=p.img;
  document.getElementById('mTitle').innerText=name;
  document.getElementById('mDesc').innerText=p.desc;
- selectedColorObj = p.colors[0];
+ selectedColorObj=p.colors[0];
  document.getElementById('mColors').innerHTML=p.colors.map((c,i)=>`<div class="colorDot ${i==0?'active':''}" style="background:${c.hex};${c.hex=='#ffffff'?'border:2px solid #000':''}" onclick="selectColor(this,'${c.name}')" data-img="${c.img}" data-hex="${c.hex}" data-name="${c.name}"></div>`).join('');
  document.getElementById('selColor').innerText=selectedColorObj.name;
  document.getElementById('productModal').style.display='flex';
  updateLink(name);
 }
-
 function selectColor(el,name){
  document.querySelectorAll('.colorDot').forEach(d=>d.classList.remove('active'));
  el.classList.add('active');
- const img = el.getAttribute('data-img');
- const hex = el.getAttribute('data-hex');
- selectedColorObj = {name:name, hex:hex, img:img};
- document.getElementById('mImg').src = img;
+ const img=el.getAttribute('data-img'); const hex=el.getAttribute('data-hex');
+ selectedColorObj={name:name,hex:hex,img:img};
+ document.getElementById('mImg').src=img;
  document.getElementById('selColor').innerText=name;
  updateLink(document.getElementById('mTitle').innerText);
 }
-
 function selectSize(el){document.querySelectorAll('.sizeBtn').forEach(d=>d.classList.remove('active'));el.classList.add('active');selectedSize=el.innerText; updateLink(document.getElementById('mTitle').innerText)}
-
 function updateLink(name){
  const qty=document.getElementById('mQty').value; const fab=document.getElementById('mFabric').value;
- const colorName = selectedColorObj? selectedColorObj.name : "Black";
- const waMsg=`Hello EODII INDUSTRY,%0A%0AI want quote for:%0AProduct: ${name}%0AColor: ${colorName}%0ASize: ${selectedSize}%0AQuantity: ${qty} pcs%0AFabric GSM: ${fab}%0A%0APlease send me price & details.`;
- const emailSub=`Inquiry for ${name} - ${qty}pcs - ${selectedSize} - ${fab}`;
- const emailBody=`Hello EODII INDUSTRY,%0D%0A%0D%0AProduct: ${name}%0D%0AColor: ${colorName}%0D%0ASize: ${selectedSize}%0D%0AQuantity: ${qty} pcs%0D%0AFabric GSM: ${fab}%0D%0A%0D%0APlease send me quotation.%0D%0A%0D%0AThank you`;
+ const colorName=selectedColorObj?selectedColorObj.name:"Black";
+ const waMsg=`Hello EODII,%0AProduct: ${name}%0AColor: ${colorName}%0ASize: ${selectedSize}%0AQty: ${qty} pcs%0AGSM: ${fab}`;
  document.getElementById('mWhatsapp').href=`https://wa.me/923157750987?text=${waMsg}`;
- document.getElementById('mEmail').href=`mailto:eodiiind@hotmail.com?subject=${emailSub}&body=${emailBody}`;
+ document.getElementById('mEmail').href=`mailto:eodiiind@hotmail.com?subject=Inquiry for ${name}&body=${waMsg}`;
 }
-
 function closeModal(){document.getElementById('productModal').style.display='none'}
 document.getElementById('mQty').addEventListener('input',()=>updateLink(document.getElementById('mTitle').innerText));
 document.getElementById('mFabric').addEventListener('change',()=>updateLink(document.getElementById('mTitle').innerText));
+
+// SLIDER JS - 12 Images Auto Slide
+let currentSlide=0; const totalSlides=12;
+function createDots(){ let h=''; for(let i=0;i<totalSlides;i++){ h+=`<div class="${i==0?'active':''}" onclick="goToSlide(${i})"></div>` } document.getElementById('sliderDots').innerHTML=h; }
+function goToSlide(n){ currentSlide=n; document.getElementById('sliderTrack').style.transform=`translateX(-${currentSlide*100}%)`; document.querySelectorAll('.dots div').forEach((d,i)=>{ d.classList.toggle('active', i==currentSlide) }); }
+function nextSlide(){ currentSlide=(currentSlide+1)%totalSlides; goToSlide(currentSlide); }
+createDots(); setInterval(nextSlide, 2500);
+
 document.addEventListener('DOMContentLoaded',renderGrid);
 </script>
 </body>
