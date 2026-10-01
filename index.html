@@ -38,7 +38,11 @@ a{text-decoration:none;color:inherit}
 .sizeBtn.active{background:#000;color:#fff;border-color:#000}
 .colorDot{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;display:inline-block;margin:3px}
 .colorDot.active{box-shadow:0 0 0 2px #ff1a1a}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.facility{grid-template-columns:1fr}.header,.hero,.products,.facility,.footer,.stats{padding:20px}.stats{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr}.hero-slider{height:320px}}
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.facility{grid-template-columns:1fr}
+.header,.hero,.products,.facility,.footer,.stats{padding:20px}.stats{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr}.hero-slider{height:320px}
+#contact{padding:15px!important}.form-row-2,.form-row-3{grid-template-columns:1fr!important}
+}
 </style>
 </head>
 <body>
@@ -110,29 +114,28 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <div style="padding:40px 60px;background:#fff" id="contact">
-<div style="background:#111;padding:30px;border-radius:16px" id="contactForm">
+<div style="background:#111;padding:30px;border-radius:16px;max-width:100%;overflow:hidden;box-sizing:border-box" id="contactForm">
 <h3 style="font-family:'Oswald',sans-serif;font-size:22px">SEND YOUR REQUIREMENT - EODII INDUSTRY®</h3>
-<p style="color:#888;font-size:12px;margin-top:5px">Fill your product details, inquiry will go directly to eodiiind@hotmail.com</p>
-<form id="inquiryForm" style="display:grid;gap:12px;margin-top:20px">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<input id="fName" required placeholder="Your Name *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<input id="fEmail" required type="email" placeholder="Your Email *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
+<p style="color:#888;font-size:12px;margin-top:5px">Fill your product details below</p>
+<form id="inquiryForm" style="display:grid;gap:12px;margin-top:20px;width:100%;box-sizing:border-box">
+<div class="form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<input id="fName" required placeholder="Your Name *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
+<input id="fEmail" required type="email" placeholder="Your Email *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-<input id="fProduct" required placeholder="Product *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<input id="fQty" required placeholder="Quantity *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<input id="fCountry" required placeholder="Your Country *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
+<div class="form-row-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+<input id="fProduct" required placeholder="Product *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
+<input id="fQty" required placeholder="Quantity *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
+<input id="fCountry" required placeholder="Your Country *" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-<input id="fColor" placeholder="Color" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<input id="fSize" placeholder="Size (S,M,L,XL)" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<select id="fGsm" required style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
+<div class="form-row-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+<input id="fColor" placeholder="Color" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
+<input id="fSize" placeholder="Size (S,M,L,XL)" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
+<select id="fGsm" required style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box">
 <option value="">Select Fabric GSM *</option><option>200 GSM</option><option>220 GSM</option><option>250 GSM</option><option>280 GSM</option><option>300 GSM</option><option>320 GSM</option><option>350 GSM</option><option>400 GSM</option><option>Custom GSM 200-400</option>
 </select>
 </div>
-<textarea id="fMsg" placeholder="Your Message / Logo / Design Details" rows="4" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff"></textarea>
-<button type="submit" id="submitBtn" style="background:#ff1a1a;color:#fff;padding:14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px">SEND INQUIRY - EODII INDUSTRY®</button>
-<p id="formStatus" style="font-size:12px;margin-top:5px;display:none"></p>
+<textarea id="fMsg" placeholder="Your Message / Logo / Design Details" rows="4" style="padding:12px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;width:100%;box-sizing:border-box"></textarea>
+<button type="submit" id="submitBtn" style="background:#25D366;color:#fff;padding:14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:15px;width:100%">💬 SEND INQUIRY VIA WHATSAPP</button>
 </form>
 </div>
 </div>
@@ -176,7 +179,18 @@ const products={
  Jackets:{img:"jacket - black.webp",desc:"Varsity Jackets • 10 Trending Colors • EODII INDUSTRY®",colors:makeColors("jacket")},
  "Sports Wears":{img:"sportswear - black.webp",desc:"Basketball Uniforms • 10 Colors • EODII INDUSTRY®",colors:makeColors("sportswear")},
  "Hats & Caps":{img:"hats - black.webp",desc:"Caps • 10 Colors • EODII INDUSTRY®",colors:makeColors("hats")},
- "Fashion Wears":{img:"fashion - black.webp",desc:"Fashion Wears • 10 Colors • EODII INDUSTRY®",colors:makeColors("fashion")},
+ "Fashion Wears":{img:"fashion - black.webp",desc:"Fashion Wears • GSM 250-350 • 10 Colors • EODII INDUSTRY®",colors:[
+  {name:"Black",hex:"#000000",img:"fashion - black.webp"},
+  {name:"White",hex:"#ffffff",img:"fashion - black.webp"},
+  {name:"Red",hex:"#ff1a1a",img:"fashion - black.webp"},
+  {name:"Navy",hex:"#0a3d62",img:"fashion - black.webp"},
+  {name:"Beige",hex:"#e8dcc6",img:"fashion - beige.webp"},
+  {name:"Olive",hex:"#6b7a5a",img:"fashion - olive.webp"},
+  {name:"Grey",hex:"#8a8a8a",img:"fashion - grey.webp"},
+  {name:"Royal Blue",hex:"#1e40af",img:"fashion - black.webp"},
+  {name:"Burgundy",hex:"#7f1d1d",img:"fashion - black.webp"},
+  {name:"Forest Green",hex:"#166534",img:"fashion - olive.webp"}
+ ]},
  "Jeans":{img:"jeans - black.webp",desc:"Baggy Jeans • 10 Colors • EODII INDUSTRY®",colors:[
   {name:"Black",hex:"#000000",img:"jeans - black.webp"},{name:"White",hex:"#ffffff",img:"jeans - white.webp"},
   {name:"Light Blue",hex:"#93c5fd",img:"jeans - lightblue.webp"},{name:"Dark Blue",hex:"#1e3a8a",img:"jeans - darkblue.webp"},
@@ -221,31 +235,21 @@ createDots(); setInterval(nextSlide,2500); document.addEventListener('DOMContent
 
 document.getElementById('inquiryForm').addEventListener('submit', function(e){
  e.preventDefault();
+ const name = document.getElementById('fName').value;
+ const email = document.getElementById('fEmail').value;
+ const product = document.getElementById('fProduct').value;
+ const qty = document.getElementById('fQty').value;
+ const country = document.getElementById('fCountry').value;
+ const color = document.getElementById('fColor').value || "Not Selected";
+ const size = document.getElementById('fSize').value || "Not Selected";
+ const gsm = document.getElementById('fGsm').value;
+ const msg = document.getElementById('fMsg').value || "No message";
+ const whatsappMessage = `*NEW INQUIRY - EODII INDUSTRY®*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Product:* ${product}%0A*Quantity:* ${qty} pcs%0A*Country:* ${country}%0A*Color:* ${color}%0A*Size:* ${size}%0A*Fabric GSM:* ${gsm}%0A*Message:* ${msg}%0A%0A_Sent from Website_`;
+ window.open(`https://wa.me/923157750987?text=${whatsappMessage}`, '_blank');
  const btn = document.getElementById('submitBtn');
- const status = document.getElementById('formStatus');
- btn.innerText = "SENDING..."; btn.disabled = true;
- status.style.display = "block"; status.style.color = "#ff1a1a";
- status.innerText = "Please wait, sending your inquiry...";
- const data = {
-  Name: document.getElementById('fName').value, Email: document.getElementById('fEmail').value,
-  Product: document.getElementById('fProduct').value, Quantity: document.getElementById('fQty').value,
-  Country: document.getElementById('fCountry').value, Color: document.getElementById('fColor').value,
-  Size: document.getElementById('fSize').value, Fabric_GSM: document.getElementById('fGsm').value,
-  Message: document.getElementById('fMsg').value, _subject: "New Inquiry - EODII INDUSTRY® Website", _captcha: "false", _template: "table"
- };
- fetch("https://formsubmit.co/ajax/eodiiind@hotmail.com", {
-  method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data)
- }).then(r=>r.json()).then(d=>{
-  btn.innerText = "INQUIRY SENT SUCCESSFULLY ✓"; btn.style.background = "#25D366";
-  status.style.color = "#25D366"; status.innerText = "✓ Thank you! Sent to eodiiind@hotmail.com. Reply in 2 hours.";
-  document.getElementById('inquiryForm').reset();
-  setTimeout(()=>{ btn.innerText="SEND INQUIRY - EODII INDUSTRY®"; btn.style.background="#ff1a1a"; btn.disabled=false; }, 4000);
- }).catch(err=>{
-  const msg = `Hello EODII INDUSTRY®,%0AName: ${data.Name}%0AEmail: ${data.Email}%0AProduct: ${data.Product}%0AQty: ${data.Quantity}%0ACountry: ${data.Country}%0AColor: ${data.Color}%0ASize: ${data.Size}%0AGSM: ${data.Fabric_GSM}%0AMessage: ${data.Message}`;
-  window.open(`https://wa.me/923157750987?text=${msg}`, '_blank');
-  status.style.color = "#25D366"; status.innerText = "Email issue, redirecting to WhatsApp!";
-  btn.innerText = "SENT VIA WHATSAPP ✓"; btn.disabled = false;
- });
+ btn.innerText = "✓ OPENED IN WHATSAPP";
+ btn.style.background = "#128C7E";
+ setTimeout(()=>{ btn.innerText = "💬 SEND INQUIRY VIA WHATSAPP"; btn.style.background="#25D366"; }, 3000);
 });
 </script>
 </body>
